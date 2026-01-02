@@ -1,33 +1,43 @@
-// src/components/BookList.jsx
-
-import BookCard from './BookCard';
-import { books } from '../data/books';
+import { motion } from 'framer-motion';
 import styles from './BookList.module.css';
+import BookCard from './BookCard';
 
-const BookList = ({ books, onBookSelected }) => { // 👇 NEW: Function to handle book selection
+function BookList({ books, onBookSelect }) {
   return (
-    <div className={styles.bookList}>
+    <motion.div 
+      className={styles.bookList}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.3 }}
+    >
       <h2>Reading Now</h2>
       
-      <div className={styles.booksContainer}>
-        {/* TODO: Use .map() to create a BookCard for each book */}
-        {books.map((book) => {
+      <motion.div 
+        className={styles.booksContainer}
+        initial="hidden"
+        animate="visible"
+        variants={{
+          visible: {
+            transition: {
+              staggerChildren: 0.1  // 👈 Each child animates 0.1s apart!
+            }
+          }
+        }}
+      >
+        {books.map((book, index) => {
           return (
-            // What goes here? Think about:
-            // 1. What component to render?
-            // 2. What props does it need?
-            // 3. Don't forget the key prop!
             <BookCard 
-              key={book.id} 
+              key={book.id}
               title={book.title} 
               author={book.author} 
-              coverImg={book.coverImg} 
-              onClick={() => onBookSelected(book)} // 👈 NEW: Call the function when clicked
+              coverImg={book.coverImg}
+              onClick={() => onBookSelect(book)}
+              index={index}  // 👈 Pass index for animation
             />
           );
         })}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

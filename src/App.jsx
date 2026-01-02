@@ -22,6 +22,7 @@ function App() {
 
   const filteredBooks = books.filter(book =>{
     const searchLower = searchTerm.toLocaleLowerCase();
+    
     return(
       book.title.toLowerCase().includes(searchLower) ||
       book.author.toLowerCase().includes(searchLower)

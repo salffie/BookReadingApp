@@ -1,6 +1,7 @@
+import { motion } from 'framer-motion';
 import styles from './NowReading.module.css';
 
-function NowReading({ book, isPlaying, onPlayPause }) {  // 👈 Add new props
+function NowReading({ book, isPlaying, onPlayPause }) {
   if (!book) return null;
   
   const progressPercentage = (book.currentPage / book.totalPages) * 100;
@@ -9,10 +10,20 @@ function NowReading({ book, isPlaying, onPlayPause }) {  // 👈 Add new props
   );
   
   return (
-    <div className={styles.nowReading}>
+    <motion.div 
+      className={styles.nowReading}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.5 }}
+      key={book.id}  // 👈 Re-animate when book changes!
+    >
       <h2 className={styles.sectionTitle}>Reading Now</h2>
       
-      <div className={styles.card}>
+      <motion.div 
+        className={styles.card}
+        layout  // 👈 Smooth layout changes
+      >
+        {/* ... rest of your card content ... */}
         <div className={styles.coverContainer}>
           <img 
             src={book.coverImg} 
@@ -32,7 +43,15 @@ function NowReading({ book, isPlaying, onPlayPause }) {  // 👈 Add new props
           
           <div className={styles.rating}>
             {stars.map((star, index) => (
-              <span key={index} className={styles.star}>{star}</span>
+              <motion.span 
+                key={index} 
+                className={styles.star}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.6 + (index * 0.1) }}  // 👈 Stars appear one by one
+              >
+                {star}
+              </motion.span>
             ))}
           </div>
           
@@ -41,26 +60,36 @@ function NowReading({ book, isPlaying, onPlayPause }) {  // 👈 Add new props
               {book.currentPage}/{book.totalPages}
             </span>
             <div className={styles.progressBar}>
-              <div 
+              <motion.div 
                 className={styles.progressFill}
-                style={{ width: `${progressPercentage}%` }}
+                initial={{ width: 0 }}
+                animate={{ width: `${progressPercentage}%` }}
+                transition={{ duration: 1, delay: 0.8 }}  // 👈 Progress bar fills
               />
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
       
-      <div className={styles.audioControls}>
+      <motion.div 
+        className={styles.audioControls}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.9 }}
+      >
         <span className={styles.time}>3:01</span>
-        <button 
+        <motion.button 
           className={styles.playButton}
-          onClick={onPlayPause}  // 👈 Add click handler
+          onClick={onPlayPause}
+          whileHover={{ scale: 1.1 }}        // 👈 Grow on hover
+          whileTap={{ scale: 0.9 }}          // 👈 Shrink on click
+          animate={{ rotate: isPlaying ? 0 : 0 }}  // Could add rotation
         >
-          {isPlaying ? '⏸' : '▶'}  {/* 👈 Change icon based on state */}
-        </button>
+          {isPlaying ? '⏸' : '▶'}
+        </motion.button>
         <span className={styles.time}>4:12</span>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

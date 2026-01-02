@@ -15,12 +15,9 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);    
   /* Make it interactive */
   cursor: pointer;
-  transition: transform 0.2s;
+  
 }
 
-.bookCard:hover {
-  transform: scale(1.05); /* Make it pop on hover? Try: scale(1.05) */;
-}
 
 .bookCard img {
   width: 100%;
