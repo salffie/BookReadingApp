@@ -1,0 +1,17 @@
+/* src/components/Greeting.module.css */
+
+.greeting {
+  margin-bottom: 30px; /* Space before book carousel? Try 30px */;
+}
+
+.greeting h1 {
+  font-size: 2rem; /* Try 2rem or 2.2rem */;
+  color: #222;
+  margin-bottom: 8px; /* Space before subtitle? Try 8px */;
+  font-weight: 700;  /* bold? Try 700 */;
+}
+
+.greeting p {
+  font-size: 1rem; /* Smaller than h1? Try 1rem */;
+  color: #666; /* Lighter gray? Try #666 */;
+}

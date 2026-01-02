@@ -1,0 +1,63 @@
+/* src/App.css */
+
+/*Part 1: Overall App Structure*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+}
+
+body {
+  -webkit-font-smoothing: antialiased;  /* Smoother fonts on Mac */
+  -moz-osx-font-smoothing: grayscale;   /* Smoother fonts on Mac */
+}
+
+.app {
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    #fdf8f3,  /* Almost white cream */
+    #f5e6d3,  /* Light golden */
+    #ead5bb   /* Warm tan */
+  ); 
+  background-attachment: fixed;
+  padding: 20px;
+}
+
+/* Headings - heavier */
+h1, h2, h3 {
+  font-weight: 700;  /* Bold */
+  letter-spacing: -0.02em;
+}
+
+/* Subheadings */
+h4 {
+  font-weight: 600;  /* Semi-bold */
+}
+
+/* Body text */
+p, span {
+  font-weight: 500;  /* Regular */
+    letter-spacing: 0.01em;  /* Slightly wider for readability */
+}
+
+/* Author names, metadata */
+.author, .pageCount, .time {
+  font-weight: 500;  /* Medium */
+}
+
+.app-header {
+  margin-bottom: 30px;
+}
+
+.app-header h1 {
+  font-size: 2.5rem; /* YOUR CHOICE - try 2rem or 2.5rem */;
+  color: #333;
+}
+
+
+
+

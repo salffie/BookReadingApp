@@ -1,0 +1,43 @@
+/* src/components/Header.module.css */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: white;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.headerCenter {
+  font-size: 1.5rem;
+}
+
+.headerRight {
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  font-size: 0.95rem;
+  font-family: 'Montserrat', sans-serif;
+  outline: none;
+  width: 150px;
+  color: #333;
+}
+
+.searchInput::placeholder {
+  color: #999;
+}
